@@ -1,3 +1,4 @@
 EnableAutoChecks: true
 AutoCheckTimeDelay: 15m
 MaxEntitiesAllowedPerChunk: 30
+ToManyEntitiesMessage: "&8[&eAntiMobLag&8] &7-&c There are to many entities in this chunk. Please kill some before breeding again."

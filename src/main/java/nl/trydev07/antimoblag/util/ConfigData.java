@@ -1,6 +1,7 @@
 package nl.trydev07.antimoblag.util;
 
 import nl.trydev07.antimoblag.AntiMobLag;
+import org.bukkit.ChatColor;
 
 import java.util.regex.Pattern;
 
@@ -14,6 +15,7 @@ public class ConfigData {
     public static final boolean enable_auto_checks = Boolean.parseBoolean(AntiMobLag.getFileManager().getConfig("config.yml").get("EnableAutoChecks").toString());
     public static final int time_between_checks = defineTime(AntiMobLag.getFileManager().getConfig("config.yml").get("AutoCheckTimeDelay").toString());
     public static final int entities_allowed = Integer.parseInt(AntiMobLag.getFileManager().getConfig("config.yml").get("MaxEntitiesAllowedPerChunk").toString());
+    public static final String To_Many_Entities_Message = ChatColor.translateAlternateColorCodes('&', AntiMobLag.getFileManager().getConfig("config.yml").get("ToManyEntitiesMessage").toString());
 
     public static int defineTime(String str) {
         int i = 0;

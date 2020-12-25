@@ -1,6 +1,5 @@
 package nl.trydev07.antimoblag;
 
-import nl.trydev07.antimoblag.commands.TestCommand;
 import nl.trydev07.antimoblag.listeners.AntiMobLagListener;
 import nl.trydev07.antimoblag.manager.ChunkManager;
 import nl.trydev07.antimoblag.util.ConfigData;
@@ -35,7 +34,6 @@ public class AntiMobLag extends JavaPlugin {
     @Override
     public void onEnable() {
         AntiMobLag = this;
-        this.getCommand("CheckEntityCount").setExecutor(new TestCommand());
         FileManager = new FileManager(this);
         FileManager.getConfig("config.yml").copyDefaults(true).save();
 
