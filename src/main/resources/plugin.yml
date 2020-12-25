@@ -1,0 +1,9 @@
+main: nl.trydev07.antimoblag.AntiMobLag
+name: AntiMobLag
+version: 0.0.1
+author: TryDev07
+website: https://github.com/TryDev07
+
+commands:
+  CheckEntityCount:
+    description: testing;

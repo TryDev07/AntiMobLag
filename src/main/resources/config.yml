@@ -1,0 +1,3 @@
+EnableAutoChecks: true
+AutoCheckTimeDelay: 15m
+MaxEntitiesAllowedPerChunk: 30
