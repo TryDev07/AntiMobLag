@@ -21,8 +21,8 @@ public class TestCommand implements CommandExecutor {
                 Player player = (Player) commandSender;
                 Chunk c = player.getLocation().getChunk();
 
-               new ChunkManager(player.getWorld());
-               ChunkManager.getChunkManager().removeToManyEntities(10);
+                new ChunkManager(player.getWorld());
+                ChunkManager.getChunkManager().removeToManyEntities(10);
 
             }
         }

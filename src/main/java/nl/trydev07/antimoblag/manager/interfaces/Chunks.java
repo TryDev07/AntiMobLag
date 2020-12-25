@@ -16,6 +16,7 @@ public interface Chunks {
     /**
      * Check if there are more entities then allowed in the chunks.
      * if there are more then allowed they will automatically be removed from the chunk.
+     *
      * @param maxAllowed Give the maximum mobs allowed in the chunks.
      */
     void removeToManyEntities(int maxAllowed);
@@ -23,6 +24,7 @@ public interface Chunks {
     /**
      * Activates the check that will happen at a each period of the given time.
      * You can change the given time using the config file.
+     *
      * @param maxAllowedByConfig Define the max allowed mobs.
      */
     void loadChecks(int maxAllowedByConfig);

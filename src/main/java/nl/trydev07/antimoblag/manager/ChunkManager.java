@@ -19,11 +19,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class ChunkManager extends ChunkData implements Chunks {
 
     static ChunkManager chunkManager;
-
-    public static ChunkManager getChunkManager() {
-        return chunkManager;
-    }
-
     int entityLength;
 
     public ChunkManager() {
@@ -34,6 +29,10 @@ public class ChunkManager extends ChunkData implements Chunks {
         setWorld(w);
         init();
         chunkManager = this;
+    }
+
+    public static ChunkManager getChunkManager() {
+        return chunkManager;
     }
 
     @Override
@@ -64,26 +63,17 @@ public class ChunkManager extends ChunkData implements Chunks {
 
     @Override
     public void loadChecks(final int maxAllowedByConfig) {
-        AntiMobLag.system_out_println(ConfigData.time_between_checks + "");
         new BukkitRunnable() {
             @Override
             public void run() {
-                long startTime = System.currentTimeMillis();
-                AntiMobLag.system_out_println("1 minute later");
                 for (World w : Bukkit.getWorlds()) {
                     new ChunkManager(w).removeToManyEntities(maxAllowedByConfig);
                 }
-
-                long endTime = System.currentTimeMillis();
-                AntiMobLag.system_out_println("it took: " + (endTime - startTime) + "ms");
             }
         }.runTaskTimerAsynchronously(AntiMobLag.getAntiMobLag(), 0, ConfigData.time_between_checks);
     }
 
     public boolean checkIfEntityMore(Chunk chunk) {
-        if (chunk.getEntities().length >= ConfigData.entities_allowed) {
-            return true;
-        }
-        return false;
+        return chunk.getEntities().length >= ConfigData.entities_allowed;
     }
 }
