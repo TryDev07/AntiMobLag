@@ -7,8 +7,7 @@ import nl.trydev07.antimoblag.util.ConfigData;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.World;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
+import org.bukkit.entity.*;
 import org.bukkit.scheduler.BukkitRunnable;
 
 /* TryDev07 created on 10-12-2020
@@ -47,11 +46,11 @@ public class ChunkManager extends ChunkData implements Chunks {
     @Override
     public void removeToManyEntities(int maxAllowed) {
         for (Chunk chunk : getChunks()) {
-            entityLength = chunk.getEntities().length;
+            entityLength = getLivingEntityCount(chunk);
             if (entityLength != 0) {
                 for (Entity chunkEntity : chunk.getEntities()) {
                     if (maxAllowed <= entityLength) {
-                        if (chunkEntity.getType() != EntityType.PLAYER) {
+                        if ((chunkEntity.getType() != EntityType.PLAYER) && (chunkEntity instanceof LivingEntity) && (!(chunkEntity instanceof ArmorStand))) {
                             chunkEntity.remove();
                             entityLength--;
                         }
@@ -75,5 +74,17 @@ public class ChunkManager extends ChunkData implements Chunks {
 
     public boolean checkIfEntityMore(Chunk chunk) {
         return chunk.getEntities().length >= ConfigData.entities_allowed;
+    }
+
+    public int getLivingEntityCount(Chunk chunk) {
+        int i = 1;
+        for (Entity entity : chunk.getEntities()) {
+            if (isLivingEntity(entity)) i++;
+        }
+        return i;
+    }
+
+    public boolean isLivingEntity(Entity entity) {
+        return entity instanceof LivingEntity && (!(entity instanceof ArmorStand)) && (!(entity instanceof Player));
     }
 }
